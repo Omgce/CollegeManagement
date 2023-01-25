@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>List Of student</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+
+<body>
+	<div class="container text-center">
+		<div>
+			<h1>Student List</h1>
+		</div>
+		<div>
+			<table class="table table-bordered">
+				<thead class="thead-dark">
+					<tr>
+						<th>ID</th>
+						<th>Student Name</th>
+						<th>About</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="student : ${listStudents}">
+						<tr>
+							<td>[[${student.id}]]</td>
+							<td>[[${student.studentName}]]</td>
+							<td>[[${student.about}]]</td>
+							<td>
+							<a th:href="@{'/students/edit/'+ ${student.id}}">Edit</a>
+							 &nbsp; |  &nbsp;
+							<a class="text-danger" th:href="@{'students/delete/'+ ${student.id}}">Delete</a>
+							</td>
+							
+						</tr>
+					</th:block>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+
+</html>
